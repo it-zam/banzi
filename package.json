@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "description": "Pet community",
   "scripts": {
-    "precommit": "lint-staged",
-    "commitmsg": "bash ./tools/bash/commit-msg.sh ${GIT_PARAMS}",
     "dev": "cross-env NODE_ENV=development APPLICATION_PHASE=development ts-node src/server/server.ts",
     "build:dev": ""
   },
@@ -73,7 +71,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run precommit"
+      "pre-commit": "lint-staged && ./tools/bash/commit-msg.sh $HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {

@@ -3,6 +3,7 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**/*.ts",
+      "./package-lock.json",
       "dist/**/*",
       "./tslint.json",
       "./tsconfig.json",
