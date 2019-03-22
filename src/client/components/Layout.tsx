@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-@withRouter
-class Layout extends React.PureComponent {
+class Layout extends React.PureComponent<RouteComponentProps> {
   render() {
     return <div>test</div>;
   }
 }
-export default Layout;
+
+export default withRouter(Layout);

@@ -8,8 +8,8 @@
     "baseUrl": "./src",
     "paths": {
       "@build": ["../build"],
-      "@components": ["/components/*"],
-      "@reducers": ["/reducers/*"]
+      "@components": ["/client/components/*"],
+      "@reducers": ["/client/reducers/*"]
     },
     "typeRoots": ["/@types"],
 
