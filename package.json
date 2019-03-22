@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Pet community",
   "scripts": {
+    "precommit": "lint-staged",
+    "commitmsg": "bash ./tools/bash/commit-msg.sh ${GIT_PARAMS}",
     "dev": "cross-env NODE_ENV=development APPLICATION_PHASE=development ts-node src/server/server.ts",
     "build:dev": ""
   },
@@ -20,14 +22,15 @@
   },
   "homepage": "https://github.com/sunhyun/banzi#readme",
   "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cookie-parser": "^1.4.1",
     "@types/express": "^4.16.1",
-    "@types/node": "^11.10.4",
+    "@types/helmet": "0.0.43",
+    "@types/node": "^11.11.4",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
-    "@types/redux": "^3.6.0",
-    "@types/redux-thunk": "^2.1.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
@@ -50,11 +53,16 @@
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
+    "webpack-dev-middleware": "^3.6.1",
+    "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1",
     "webpack-spritesmith": "^1.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
+    "helmet": "^3.16.0",
     "immutable": "^4.0.0-rc.12",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -62,5 +70,20 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,scss,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "{,!(node_modules|dist)/**/}*.{js,jsx,ts,tsx,json}": [
+      "tslint --fix",
+      "git add"
+    ]
   }
 }
