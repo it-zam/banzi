@@ -26,6 +26,7 @@
       "severity": "warning",
       "options": ["debug", "info", "time", "timeEnd", "trace"]
     },
+    "member-access": [true, "no-public"],
     "ordered-imports": false,
     // Formatting
     "quotemark": [true, "single", "jsx-double"],
