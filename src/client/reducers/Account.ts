@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { Dispatch } from 'redux';
 
 const FETCH_USER_INFO = 'account/fetchUserInfo';
 
@@ -27,8 +28,7 @@ export default function reducer(state = INIT_STATE, action: any = {}) {
 }
 
 export function fetchUserInfo() {
-  return (dispatch) => {
-    // TODO request to server
+  return (dispatch: Dispatch) => {
     dispatch({
       type: FETCH_USER_INFO,
       data: {},

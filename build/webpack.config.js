@@ -8,7 +8,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
 
 const PROJECT_ROOT = path.resolve(__dirname, '../');
-const APP_ENTRY = path.join(PROJECT_ROOT, 'src/');
+const APP_ENTRY = path.join(PROJECT_ROOT, 'src/client');
 const OUTPUT_PATH = path.join(PROJECT_ROOT, 'dist');
 
 const version = process.env.npm_package_version || '0.0.0';
@@ -22,7 +22,7 @@ console.log('******************** WEBPACK BUILD ********************');
 const commonConfig = {
   mode: APPLICATION_PHASE,
   entry: {
-    app: `${APP_ENTRY}/index.tsx`,
+    app: `${APP_ENTRY}/App.tsx`,
   },
   output: {
     filename: `app.${version}.js`,
@@ -52,17 +52,17 @@ const commonConfig = {
   plugins: [
     new SpritesmithPlugin({
       src: {
-        cwd: path.resolve(__dirname, 'resources/img/'),
+        cwd: path.resolve(APP_ENTRY, 'resources/img'),
         glob: '*',
       },
       target: {
         image: path.resolve(
-          __dirname,
+          APP_ENTRY,
           'resources/img/spritesmith-generated.png'
         ),
         css: path.resolve(
-          __dirname,
-          'resources/scsses/spritesmith-generated.scss'
+          APP_ENTRY,
+          'resources/img/spritesmith-generated.scss'
         ),
       },
       apiOptions: {
@@ -95,6 +95,12 @@ const devConfig = {
     ],
   },
   plugins: [],
+  devServer: {
+    host: '0.0.0.0',
+    port: 8080,
+    hot: true,
+    publicPath: '/app/client',
+  },
 };
 
 const prodConfig = {

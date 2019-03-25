@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Pet community",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development APPLICATION_PHASE=development ts-node src/server/server.ts",
+    "dev:client": "cross-env NODE_ENV=development APPLICATION_PHASE=development webpack-dev-server --mode=development --config ./build/webpack.config.js",
+    "dev:server": "cross-env NODE_ENV=development APPLICATION_PHASE=development ts-node src/server/server.ts",
     "build:dev": ""
   },
   "repository": {
@@ -50,8 +51,9 @@
     "typescript": "^3.3.3333",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-middleware": "^3.6.1",
+    "webpack-dev-server": "^3.2.1",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1",
     "webpack-spritesmith": "^1.0.0"
